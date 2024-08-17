@@ -3,17 +3,20 @@ console.log("Dice roller file loaded.");
 
 
 
-// Is a closure, because rollDice is a function
+// Is a closure, because rollDice is a function 
 console.log(rollDice(20));
 
 
-// Not a closure, because rollD20 is a const variable
+// Not a closure, because rollD20 is a const variable 
 console.log(rollD20());
 
 
 
-// Function that rolls a dice and the dice size is a parameter 
-// generic dice roller function 
+/**
+ * Function that rolls a dice and the dice size is a parameter 
+ * @param {number} diceSize Size of the dice. This is the maximum number that you can roll.
+ * @returns {number}
+ */
 function rollDice(diceSize = 6){
 	console.log("Dice rolling function has been called with a dice size of " + diceSize);
 
@@ -39,14 +42,20 @@ function rollDice(diceSize = 6){
 // rollDice(10000); // diceSize is 10000
 
 
-// Function that rolls a dice and the dice is a 6-sided dice 
-// specific dice roller function that calls the generic function 
+
+/**
+ * Function that rolls a dice and the dice is a 6-sided dice 
+ * @returns {number}
+ */
 const rollD6 = () => rollDice(6);
 
 console.log("RollD6 function result is: " + rollD6());
 
-// Function that rolls a dice and the dice is a 20-sided dice 
-// specific dice roller function that calls the generic function 
+
+/**
+ * Function that rolls a dice and the dice is a 20-sided dice 
+ * @returns {number}
+ */
 const rollD20 = () => {
 	// let diceResult = rollDice(20);
 	// return diceResult;
@@ -60,27 +69,31 @@ let superAwesomeDiceResult = rollD20();
 console.log("Super awesome dice result is: " + superAwesomeDiceResult);
 
 // Declare without assignment
-let diceResults;
+let diceResults; 
 
-// let, var, const
+// let, var, const 
 
+/**
+ * Roll two dice and return the highest result. 
+ * @returns {number}
+ */
 function rollD20WithAdvantage(){
-    tempDiceResults = [
-        rollD20(),
-        rollD20()
-    ];
+	let tempDiceResults = [
+		rollD20(),
+		rollD20()
+	];
 
-    let highestRoll = 0;
+	let highestRoll = 0;
 
-    tempDiceResults.forEach((individualResult) => {
-        if (highestRoll < individualResult){
-            highestRoll = individualResult;
-        }
-    });
+	tempDiceResults.forEach((individualResult) => {
+		if (highestRoll < individualResult){
+			highestRoll = individualResult;
+		}
+	});
+	
+	console.log(tempDiceResults);
 
-    console.log(tempDiceResults);
-
-    return highestRoll;
+	return highestRoll;
 }
 
 
@@ -95,9 +108,9 @@ console.log("Rolling 2 D20 with advantage:" + rollD20WithAdvantage());
 
 
 // let and var can be changed after declaration
-let diceResultChangeable = rollD20();
+var diceResultChangeable = rollD20();
 diceResultChangeable = rollD20();
 
-// const cannot be changed after declaration
+// const cannot be changed after declaration 
 const diceResultConstant = rollD20();
 diceResultConstant = rollD20();
